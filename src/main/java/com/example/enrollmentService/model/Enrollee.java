@@ -1,10 +1,12 @@
 package com.example.enrollmentService.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+@Document
 public class Enrollee {
 
     //requiredFields
@@ -20,13 +22,22 @@ public class Enrollee {
     private ArrayList<Dependent> dependents; //zero or more
 
 
-    public Enrollee(String firstName, String lastName, boolean active, Date birthDate, String phoneNumber, ArrayList<Dependent> dependents) {
+    public Enrollee(String id, String firstName, String lastName, boolean active, Date birthDate, String phoneNumber, ArrayList<Dependent> dependents) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.active = active;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
         this.dependents = dependents;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {

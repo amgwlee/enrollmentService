@@ -1,9 +1,11 @@
 package com.example.enrollmentService.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+@Document
 public class Dependent {
 
     //requiredFields
@@ -13,10 +15,19 @@ public class Dependent {
     private String lastName;
     private Date birthDate;
 
-    public Dependent(String firstName, String lastName, Date birthDate) {
+    public Dependent(String id, String firstName, String lastName, Date birthDate) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
