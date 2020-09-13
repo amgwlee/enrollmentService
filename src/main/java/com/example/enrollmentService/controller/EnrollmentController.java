@@ -35,12 +35,14 @@ public class EnrollmentController {
         return enrollmentService.findByLastName(lastName);
     }
 
+    //Add single Enrollee at a time
     @PostMapping(value = "/addOrUpdateEnrollee")
     public ResponseEntity<?> saveOrUpdateEnrollee(@RequestBody Enrollee enrollee) {
         enrollmentService.saveOrUpdateEnrollee(enrollee);
         return new ResponseEntity("Enrollee added/updated successfully", HttpStatus.OK);
     }
 
+    //Delete single Enrollee at a time
     @DeleteMapping(value = "/deleteEnrollee/{id}")
     public ResponseEntity<?> deleteEnrollee(@PathVariable("id") String id) {
         enrollmentService.deleteEnrollee(id);
@@ -54,6 +56,7 @@ public class EnrollmentController {
         return new ResponseEntity("Dependent added/updated successfully", HttpStatus.OK);
     }
 
+    //Requires enrolleeId: "", dependentId: ""
     @PostMapping(value = "/deleteDependent")
     public ResponseEntity<?> deleteDependent(@RequestBody String requestBody) {
         enrollmentService.deleteDependent(requestBody);

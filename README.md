@@ -1,4 +1,13 @@
+This was my first time setting up a REST service with a non-relational database.
+ I picked MongoDB due to it's popularity and ease of initial setup. 
+ Application was built using Java 8, Spring Boot, Maven, MongoDB, and OpenAPI 3.0. JUnit and Mockito used for testing. API calls and testing done using Postman.
+
 # enrollmentService
+!Important!
+
+Make sure you have an instance of MongoDB running locally before starting the service. This service is configured to connect to mongodb running on port 27017, and writes to the collection "enrollmentDB".
+
+
 Run the application by using __mvn spring-boot:run__
 
 Alternatively, you can build the JAR file with __mvn clean package__ and then run the JAR file, as follows:
@@ -7,18 +16,15 @@ __java -jar target/enrollment-service-0.0.1.jar__
 
 Once the application is running, you can visit it at __http://localhost:8081/enrollees__
 
-MongoDB monitoring URL: https://cloud.mongodb.com/freemonitoring/cluster/FD6YI6ZV7PTMFS4XM5SU7OYXXWAVK6ZE
+API Doc at
+__http://localhost:8081/api-docs/__
 
-
-
-
-
-
+Swagger page at
+__http://localhost:8081/swagger-ui.html__
 
 <br>
 <br>
 <br>
-
 
 ***Requirements:***
 - Enrollees must have an id, name, and activation status (true or false), and a birth date
@@ -46,6 +52,8 @@ MongoDB monitoring URL: https://cloud.mongodb.com/freemonitoring/cluster/FD6YI6Z
 Sample Data:
 
 ```
+/addOrUpdateEnrollee:
+
 [
   {
     "id": "1001",
@@ -247,11 +255,10 @@ Sample Data:
 ```
 
 
-Dependent function testing:
+Dependent function testing data and expected JSON structure:
 
 ```
-Add/Update:
-
+/addOrUpdateDependent:
 
 {
     "enrolleeId": "1001",
@@ -264,8 +271,7 @@ Add/Update:
       }
   }
   
-  
-  Remove:
+/deleteDependent:
   
   {
     "enrolleeId": "1001",
