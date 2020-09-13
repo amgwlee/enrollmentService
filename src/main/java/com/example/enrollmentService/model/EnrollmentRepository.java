@@ -15,5 +15,4 @@ public interface EnrollmentRepository extends MongoRepository<Enrollee, String> 
 
     List<Enrollee> findByLastName(@Param("name") String lastName);
 
-
 }

@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document
 public class Dependent {
 
     //requiredFields

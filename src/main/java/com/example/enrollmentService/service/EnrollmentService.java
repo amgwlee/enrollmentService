@@ -1,8 +1,10 @@
 package com.example.enrollmentService.service;
 
+import com.example.enrollmentService.model.Dependent;
 import com.example.enrollmentService.model.Enrollee;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface EnrollmentService {
@@ -17,8 +19,8 @@ public interface EnrollmentService {
 
     void deleteEnrollee(String id);
 
-//    void saveOrUpdateDependents(String enrolleeId, Dependent dependent);
-//
-//    void deleteDependents(String id);
+    void saveOrUpdateDependents(String requestBody);
+
+    void deleteDependent(String requestBody);
 
 }

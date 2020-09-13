@@ -5,7 +5,7 @@ Alternatively, you can build the JAR file with __mvn clean package__ and then ru
 
 __java -jar target/enrollment-service-0.0.1.jar__
 
-Once the application is running, you can visit it at __http://localhost:8080/greeting__
+Once the application is running, you can visit it at __http://localhost:8081/enrollees__
 
 MongoDB monitoring URL: https://cloud.mongodb.com/freemonitoring/cluster/FD6YI6ZV7PTMFS4XM5SU7OYXXWAVK6ZE
 
@@ -48,7 +48,7 @@ Sample Data:
 ```
 [
   {
-    "_id": "5f5bd489d217b4c3fb9dd261",
+    "id": "1001",
     "firstName": "Helga",
     "lastName": "Hurst",
     "active": false,
@@ -56,19 +56,19 @@ Sample Data:
     "phone": "+1 (933) 442-3030",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Reid",
         "lastName": "Bruce",
         "birthDate": "2014-07-21"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Merle",
         "lastName": "Ray",
         "birthDate": "2015-08-24"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "Tammy",
         "lastName": "Huff",
         "birthDate": "2016-11-21"
@@ -76,7 +76,7 @@ Sample Data:
     ]
   },
   {
-    "_id": "5f5bd4890bfa750ff5f1dd4e",
+    "id": "1002",
     "firstName": "Rose",
     "lastName": "Bass",
     "active": true,
@@ -84,19 +84,19 @@ Sample Data:
     "phone": "+1 (840) 600-2872",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Kline",
         "lastName": "Whitaker",
         "birthDate": "2015-01-21"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Anthony",
         "lastName": "Key",
         "birthDate": "2015-05-09"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "Cannon",
         "lastName": "Vega",
         "birthDate": "2014-02-17"
@@ -104,7 +104,7 @@ Sample Data:
     ]
   },
   {
-    "_id": "5f5bd48964ba124e0aeed84b",
+    "id": "1003",
     "firstName": "Ramsey",
     "lastName": "Robertson",
     "active": false,
@@ -112,19 +112,19 @@ Sample Data:
     "phone": "+1 (984) 434-2003",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Nora",
         "lastName": "Whitehead",
         "birthDate": "2017-05-24"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Alice",
         "lastName": "Kirkland",
         "birthDate": "2014-06-30"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "Gross",
         "lastName": "Vance",
         "birthDate": "2015-11-20"
@@ -132,7 +132,7 @@ Sample Data:
     ]
   },
   {
-    "_id": "5f5bd4896f61bd657e63701a",
+    "id": "1004",
     "firstName": "Alisha",
     "lastName": "Maddox",
     "active": false,
@@ -140,19 +140,19 @@ Sample Data:
     "phone": "+1 (934) 470-2793",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Hull",
         "lastName": "Fernandez",
         "birthDate": "2015-05-27"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Annmarie",
         "lastName": "Clark",
         "birthDate": "2020-08-28"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "Gail",
         "lastName": "Wyatt",
         "birthDate": "2018-05-30"
@@ -160,7 +160,7 @@ Sample Data:
     ]
   },
   {
-    "_id": "5f5bd489016546327382cf0f",
+    "id": "1005",
     "firstName": "Moody",
     "lastName": "Reid",
     "active": true,
@@ -168,19 +168,19 @@ Sample Data:
     "phone": "+1 (914) 456-3962",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Pennington",
         "lastName": "Michael",
         "birthDate": "2016-04-04"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Reyna",
         "lastName": "Nguyen",
         "birthDate": "2016-09-26"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "Erickson",
         "lastName": "Maxwell",
         "birthDate": "2020-03-05"
@@ -188,7 +188,7 @@ Sample Data:
     ]
   },
   {
-    "_id": "5f5bd4899fcdf1c7fb090c96",
+    "id": "1006",
     "firstName": "Claudine",
     "lastName": "Mcmillan",
     "active": false,
@@ -196,19 +196,19 @@ Sample Data:
     "phone": "+1 (998) 540-2114",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Bartlett",
         "lastName": "Gaines",
         "birthDate": "2016-01-30"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Beard",
         "lastName": "Perkins",
         "birthDate": "2019-06-09"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "David",
         "lastName": "Wheeler",
         "birthDate": "2016-08-06"
@@ -216,7 +216,7 @@ Sample Data:
     ]
   },
   {
-    "_id": "5f5bd489d1b28a29de34703a",
+    "id": "1007",
     "firstName": "Rivas",
     "lastName": "Henderson",
     "active": false,
@@ -224,19 +224,19 @@ Sample Data:
     "phone": "+1 (966) 596-3746",
     "dependents": [
       {
-        "id": 0,
+        "id": 10,
         "firstName": "Sonia",
         "lastName": "Hester",
         "birthDate": "2020-03-02"
       },
       {
-        "id": 1,
+        "id": 11,
         "firstName": "Johns",
         "lastName": "Pennington",
         "birthDate": "2018-03-07"
       },
       {
-        "id": 2,
+        "id": 12,
         "firstName": "Corrine",
         "lastName": "Gomez",
         "birthDate": "2014-06-30"
@@ -244,4 +244,31 @@ Sample Data:
     ]
   }
 ]
+```
+
+
+Dependent function testing:
+
+```
+Add/Update:
+
+
+{
+    "enrolleeId": "1001",
+    "dependent": 
+      {
+        "id": 20,
+        "firstName": "Aaron",
+        "lastName": "Lee",
+        "birthDate": "1993-02-01"
+      }
+  }
+  
+  
+  Remove:
+  
+  {
+    "enrolleeId": "1001",
+    "dependentId": "20"
+  }
 ```

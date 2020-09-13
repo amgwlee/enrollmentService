@@ -1,8 +1,10 @@
 package com.example.enrollmentService.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import com.example.enrollmentService.model.Dependent;
 import com.example.enrollmentService.model.Enrollee;
 import com.example.enrollmentService.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,15 +35,29 @@ public class EnrollmentController {
         return enrollmentService.findByLastName(lastName);
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/addOrUpdateEnrollee")
     public ResponseEntity<?> saveOrUpdateEnrollee(@RequestBody Enrollee enrollee) {
         enrollmentService.saveOrUpdateEnrollee(enrollee);
-        return new ResponseEntity("Enrollee added successfully", HttpStatus.OK);
+        return new ResponseEntity("Enrollee added/updated successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public void deleteEnrollee(@PathVariable("id") String id) {
+    @DeleteMapping(value = "/deleteEnrollee/{id}")
+    public ResponseEntity<?> deleteEnrollee(@PathVariable("id") String id) {
         enrollmentService.deleteEnrollee(id);
+        return new ResponseEntity("Enrollee deleted successfully", HttpStatus.OK);
+    }
+
+    //Requires enrolleeId: "", Dependent: dependentObject
+    @PostMapping(value = "/addOrUpdateDependent")
+    public ResponseEntity<?> saveOrUpdateDependents(@RequestBody String requestBody) {
+        enrollmentService.saveOrUpdateDependents(requestBody);
+        return new ResponseEntity("Dependent added/updated successfully", HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/deleteDependent")
+    public ResponseEntity<?> deleteDependent(@RequestBody String requestBody) {
+        enrollmentService.deleteDependent(requestBody);
+        return new ResponseEntity("Dependent deleted successfully", HttpStatus.OK);
     }
 
 
