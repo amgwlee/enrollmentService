@@ -1,16 +1,14 @@
 package com.example.enrollmentService.controller;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import com.example.enrollmentService.model.Dependent;
 import com.example.enrollmentService.model.Enrollee;
 import com.example.enrollmentService.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/enrollees")
@@ -51,8 +49,8 @@ public class EnrollmentController {
 
     //Requires enrolleeId: "", Dependent: dependentObject
     @PostMapping(value = "/addOrUpdateDependent")
-    public ResponseEntity<?> saveOrUpdateDependents(@RequestBody String requestBody) {
-        enrollmentService.saveOrUpdateDependents(requestBody);
+    public ResponseEntity<?> saveOrUpdateDependent(@RequestBody String requestBody) {
+        enrollmentService.saveOrUpdateDependent(requestBody);
         return new ResponseEntity("Dependent added/updated successfully", HttpStatus.OK);
     }
 

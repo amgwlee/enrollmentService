@@ -1,5 +1,6 @@
 package com.example.enrollmentService.service;
 
+import com.example.enrollmentService.component.DependentComponent;
 import com.example.enrollmentService.model.Dependent;
 import com.example.enrollmentService.model.Enrollee;
 import com.example.enrollmentService.model.EnrollmentRepository;
@@ -20,6 +21,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     @Autowired
     private EnrollmentRepository enrollmentRepository;
+
+    @Autowired
+    private DependentComponent dependentComponent;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -49,7 +53,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     }
 
     @Override
-    public void saveOrUpdateDependents(String requestBody) {
+    public void saveOrUpdateDependent(String requestBody) {
 
         Optional<Enrollee> foundEnrollee = null;
         Dependent dependent = null;
@@ -83,20 +87,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         if(enrolleeId != null || enrolleeId.isEmpty())
             foundEnrollee = findById(enrolleeId);
 
-        //ensure valid enrollee is found before updating
+        //ensure valid enrollee and dependent are found before updating
         if(foundEnrollee.isPresent() && dependent != null) {
-            Enrollee enrollee = foundEnrollee.get();
-
-            for (int i = 0; i < enrollee.getDependents().size(); i++) {
-                //if dependents match, remove dependent, re-add with new fields, and then break
-                if (Integer.valueOf(enrollee.getDependents().get(i).getId()) == Integer.valueOf(dependent.getId())) {
-                    enrollee.getDependents().remove(i);
-                    break;
-                }
-            }
-
-            //if dependent is new, just add it without removing anything
-            enrollee.getDependents().add(dependent);
+            Enrollee enrollee = dependentComponent.saveOrUpdateDependent(foundEnrollee.get(), dependent);
 
             saveOrUpdateEnrollee(enrollee);
         } else {
@@ -127,16 +120,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
         //ensure valid enrollee is found before updating
         if(foundEnrollee.isPresent()) {
-            Enrollee enrollee = foundEnrollee.get();
+            Enrollee enrollee = dependentComponent.deleteDependent(foundEnrollee.get(), dependentId);
 
-            for (int i = 0; i < enrollee.getDependents().size(); i++) {
-                //if dependents match, remove dependent and then break
-                if (Integer.valueOf(enrollee.getDependents().get(i).getId()) == Integer.valueOf(dependentId)) {
-                    enrollee.getDependents().remove(i);
-                    saveOrUpdateEnrollee(enrollee);
-                    break;
-                }
-            }
+            saveOrUpdateEnrollee(enrollee);
 
         } else {
             return;
