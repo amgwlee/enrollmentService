@@ -2,15 +2,20 @@ package com.example.enrollmentService.model;
 
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 public class Dependent {
 
     //requiredFields
     @Id
+    @NotBlank
     private String id;
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private Date birthDate;
 
     public Dependent(String id, String firstName, String lastName, Date birthDate) {

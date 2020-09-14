@@ -3,6 +3,7 @@ package com.example.enrollmentService.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,10 +12,15 @@ public class Enrollee {
 
     //requiredFields
     @Id
+    @NotBlank
     private String id;
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    //doesn't need annotation by defaulting to false
     private boolean active;
+    @NotBlank
     private Date birthDate;
 
     //optionalFields
