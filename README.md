@@ -1,6 +1,9 @@
 This was my first time setting up a REST service with a non-relational database.
  I picked MongoDB due to it's popularity and ease of initial setup. 
  Application was built using Java 8, Spring Boot, Maven, MongoDB, and OpenAPI 3.0. JUnit used for testing. API calls and testing done using Postman.
+ 
+ 
+ Given more time other changes I would have liked to have made include hardening validation and security for database CRUD operations and API endpoint access, including user identity validation, database read/write/delete permissions, and requiring HTTPS instead of HTTP. 
 
 # enrollmentService
 !Important!
